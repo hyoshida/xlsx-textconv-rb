@@ -4,7 +4,13 @@ require 'roo'
 class XlsxTextconv
   class << self
     def run(filepath)
-      open(filepath).each_with_pagename {|name, sheet| puts name; puts sheet.to_yaml}
+      open(filepath).each_with_pagename do |name, sheet|
+        puts name
+
+        sheet.each do |row|
+          puts row.join("\t")
+        end
+      end
     end
 
     private
