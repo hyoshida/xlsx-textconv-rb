@@ -5,10 +5,8 @@ class XlsxTextconv
   class << self
     def run(filepath)
       open(filepath).each_with_pagename do |name, sheet|
-        puts name
-
         sheet.each do |row|
-          puts row.join("\t")
+          puts "[#{name}]: #{row.join("\t")}"
         end
       end
     end
